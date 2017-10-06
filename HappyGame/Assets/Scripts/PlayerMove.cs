@@ -21,7 +21,8 @@ public class PlayerMove : MonoBehaviour
         float y = Input.GetAxis("Vertical") * Time.deltaTime * vel;
 
         transform.Translate(x, y, 0);
-
+        Vector3 vec = new Vector3(x, y, 0);
+        this.GetComponent<Rigidbody2D>().AddForce(vec, ForceMode2D.Force);
         //Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
 
 

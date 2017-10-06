@@ -22,7 +22,6 @@ public class Scape : MonoBehaviour
         {
             Vector3 direction = Player.transform.position - transform.position;
             direction = -Vector3.Normalize(direction) * Time.deltaTime * speed;
-            direction.z = 0;
             transform.Translate(direction);
         }
     }

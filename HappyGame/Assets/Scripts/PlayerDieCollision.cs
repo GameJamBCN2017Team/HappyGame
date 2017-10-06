@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDieCollision : MonoBehaviour {
 
-    void OnCollisionEnter(Collision col)
+    void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.tag == "Enemy")
         {

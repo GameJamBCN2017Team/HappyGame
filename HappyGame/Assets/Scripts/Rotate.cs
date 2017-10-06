@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletRotate : MonoBehaviour {
+public class Rotate : MonoBehaviour {
 
     public float vel = 10;
 
