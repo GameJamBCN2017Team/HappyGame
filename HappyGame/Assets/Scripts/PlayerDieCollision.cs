@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDieCollision : MonoBehaviour {
 
@@ -9,6 +10,8 @@ public class PlayerDieCollision : MonoBehaviour {
         if(col.gameObject.tag == "Enemy")
         {
             Destroy(this.gameObject);
+            SceneManager.LoadScene("TryAgain", LoadSceneMode.Single);
+            SceneManager.UnloadScene("HappyGame");
         }
     }
 }
