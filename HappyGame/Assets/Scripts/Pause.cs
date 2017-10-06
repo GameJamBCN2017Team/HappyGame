@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Pause : MonoBehaviour
 {
+    public GameObject UI;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
+            UI.SetActive(true);
             if (Time.timeScale == 1)
             {
                 Time.timeScale = 0;
@@ -21,6 +23,7 @@ public class Pause : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.O))
         {
+            UI.SetActive(false);
             if (Time.timeScale == 0)
             {
                 Time.timeScale = 1;
