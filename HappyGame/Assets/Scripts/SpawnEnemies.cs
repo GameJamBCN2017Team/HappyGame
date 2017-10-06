@@ -6,6 +6,7 @@ public class SpawnEnemies : MonoBehaviour {
 
     public GameObject enemy;
     int cont = 0;
+    bool pause = false;
 
     // Use this for initialization
     void Start()
@@ -16,11 +17,23 @@ public class SpawnEnemies : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        cont++;
-        if (cont >= 60)
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            spawn();
-            cont = 0;
+            pause = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            pause = false;
+        }
+
+        if (pause == false) { 
+             cont++;
+             if (cont >= 60)
+             {
+             spawn();
+              cont = 0;
+             }
         }
     }
 
