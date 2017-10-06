@@ -65,5 +65,8 @@ public class EnemyLife : MonoBehaviour
     }
 
 
-
+    public uint GetCurLife()
+    {
+        return cur_lifes;
+    }
 }
