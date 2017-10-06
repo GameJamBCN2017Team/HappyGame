@@ -7,6 +7,7 @@ public class EnemyLife : MonoBehaviour
     GoTo gt_script;
     Scape scape_script;
     Rotate rot_script;
+    DestroyEntity dest_script;
 
     public uint lifes = 3;
     private uint cur_lifes;
@@ -19,6 +20,7 @@ public class EnemyLife : MonoBehaviour
         gt_script = GetComponent<GoTo>();
         scape_script = GetComponent<Scape>();
         rot_script = GetComponent<Rotate>();
+        dest_script = GetComponent<DestroyEntity>();
 
         cur_lifes = lifes;
     }
@@ -41,6 +43,8 @@ public class EnemyLife : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
+            Destroy(collision.gameObject);
+
             cur_time = 0.0f;
             cur_lifes = cur_lifes - 1;
 
@@ -49,6 +53,7 @@ public class EnemyLife : MonoBehaviour
                 gt_script.enabled = false;
                 rot_script.enabled = true;
                 scape_script.enabled = true;
+                dest_script.enabled = true;
             }
 
             else if (cur_lifes == (lifes - 1))
