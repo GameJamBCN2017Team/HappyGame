@@ -10,7 +10,7 @@ public class EnemyAnimationManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
-        enemy_life_script = GetComponent<EnemyLife>();
+        enemy_life_script = GetComponentInParent<EnemyLife>();
 
     }
 	

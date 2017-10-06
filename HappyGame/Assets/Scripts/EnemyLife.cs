@@ -19,7 +19,7 @@ public class EnemyLife : MonoBehaviour
     {
         gt_script = GetComponent<GoTo>();
         scape_script = GetComponent<Scape>();
-        rot_script = GetComponent<Rotate>();
+        rot_script = GetComponentInChildren<Rotate>();
         dest_script = GetComponent<DestroyEntity>();
 
         cur_lifes = lifes;
@@ -28,7 +28,7 @@ public class EnemyLife : MonoBehaviour
     void Update()
     {
         cur_time += Time.deltaTime;
-        if (cur_time > regen_rate && cur_lifes < lifes)
+        if (cur_time > regen_rate && cur_lifes < lifes && cur_lifes > 0)
         {
             cur_lifes += 1;
             cur_time = 0.0f;
