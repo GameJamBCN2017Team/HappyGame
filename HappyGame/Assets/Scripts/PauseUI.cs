@@ -15,8 +15,8 @@ public class PauseUI : MonoBehaviour
         GUI.Box(new Rect(510, 160, 350, 200), "Pause", name2);
         if (GUI.Button(new Rect(560, 230, 250, 50), "Back to Menu", name3))
         {
-            
             SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+            SceneManager.UnloadScene("HappyGame");
         }
        
        if (GUI.Button(new Rect(560, 290, 250, 50), "Exit game", name3))
