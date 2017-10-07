@@ -8,6 +8,7 @@ public class EnemyLife : MonoBehaviour
     Scape scape_script;
     Rotate rot_script;
     DestroyEntity dest_script;
+    GameObject rainbow_holder;
 
     public uint lifes = 3;
     private uint cur_lifes;
@@ -15,12 +16,17 @@ public class EnemyLife : MonoBehaviour
     public float regen_rate = 1.5f;
     private float cur_time = 0.0f;
 
+    private float rainbow_cur_time;
+    public float rainbow_tot_time;
+
     void Start()
     {
         gt_script = GetComponent<GoTo>();
         scape_script = GetComponent<Scape>();
         rot_script = GetComponentInChildren<Rotate>();
         dest_script = GetComponent<DestroyEntity>();
+        rainbow_holder = transform.Find("RainbowHolder").gameObject;
+        rainbow_holder.SetActive(false);
 
         cur_lifes = lifes;
     }
@@ -37,6 +43,15 @@ public class EnemyLife : MonoBehaviour
                 gt_script.enabled = true;
             }
         }
+
+        if (rainbow_tot_time <= rainbow_cur_time)
+        {
+            rainbow_holder.SetActive(false);
+            rainbow_cur_time = 0.0f;
+        }
+
+        rainbow_cur_time += Time.deltaTime;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -59,6 +74,12 @@ public class EnemyLife : MonoBehaviour
             else if (cur_lifes == (lifes - 1))
             {
                 gt_script.enabled = false;
+            }
+
+            if(cur_lifes > 0)
+            {
+                rainbow_holder.SetActive(true);
+                rainbow_cur_time = 0.0f;
             }
         }
 
