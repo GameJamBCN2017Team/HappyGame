@@ -25,22 +25,22 @@ public class PlayerMove : MonoBehaviour
         this.GetComponent<Rigidbody2D>().AddForce(vec, ForceMode2D.Force);
         //Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
         
-        if (transform.position.x <= -10.0f)
+        if (transform.position.x <= -3.50f)
         {
-            transform.position = new Vector3(-10.0f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(-3.50f, transform.position.y, transform.position.z);
         }
-        else if (transform.position.x >= 10.0f)
+        else if (transform.position.x >= 9.30f)
         {
-            transform.position = new Vector3(10.0f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(9.30f, transform.position.y, transform.position.z);
         }
 
-        if (transform.position.y <= -4.5f)
+        if (transform.position.y <= -3.7f)
         {
-            transform.position = new Vector3(transform.position.x, -4.5f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, -3.7f, transform.position.z);
         }
-        else if (transform.position.y >= 4.5f)
+        else if (transform.position.y >= 3.5f)
         {
-            transform.position = new Vector3(transform.position.x, 4.5f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 3.5f, transform.position.z);
         }
     }
 }

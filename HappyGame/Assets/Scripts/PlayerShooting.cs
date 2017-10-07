@@ -6,6 +6,7 @@ public class PlayerShooting : MonoBehaviour
     public float power = 1500f;
     public float fire_rate = 0.01f;
     private float cur_time = 0.0f;
+    public AudioSource sound;
     // Update is called once per frame
     void Update()
     {
@@ -16,6 +17,7 @@ public class PlayerShooting : MonoBehaviour
 
             if (Input.GetButton("Fire1") || Input.GetButtonDown("Fire1"))
             {
+                sound.Play();
                 Rigidbody2D instance = Instantiate(bullet, transform.position, transform.rotation) as Rigidbody2D;
 
                 Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
