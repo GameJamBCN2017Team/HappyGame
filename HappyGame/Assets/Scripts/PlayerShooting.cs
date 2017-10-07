@@ -14,6 +14,13 @@ public class PlayerShooting : MonoBehaviour
     public float max_spawn_dist = 3.0f;
     private float cur_spawn_dist;
 
+    AudioSource shoot_fx;
+
+    void Start()
+    {
+        shoot_fx = GetComponent<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +32,7 @@ public class PlayerShooting : MonoBehaviour
             if (Input.GetButton("Fire1") || Input.GetButtonDown("Fire1"))
             {
                 instance = Instantiate(bullet, transform.position, transform.rotation) as Rigidbody2D;
+                shoot_fx.Play();
 
                 cur_time = 0.0f;
                 shoot_delay_timer = 0.0f;

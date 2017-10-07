@@ -9,6 +9,7 @@ public class EnemyLife : MonoBehaviour
     Rotate rot_script;
     DestroyEntity dest_script;
     GameObject rainbow_holder;
+    AudioSource collide_fx;
 
     public uint lifes = 3;
     private uint cur_lifes;
@@ -25,6 +26,7 @@ public class EnemyLife : MonoBehaviour
         scape_script = GetComponent<Scape>();
         rot_script = GetComponentInChildren<Rotate>();
         dest_script = GetComponent<DestroyEntity>();
+        collide_fx = GetComponent<AudioSource>();
         rainbow_holder = transform.Find("RainbowHolder").gameObject;
         rainbow_holder.SetActive(false);
 
@@ -59,6 +61,7 @@ public class EnemyLife : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             Destroy(collision.gameObject);
+            collide_fx.Play();
 
             cur_time = 0.0f;
             cur_lifes = cur_lifes - 1;
