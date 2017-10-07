@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EnemyLife : MonoBehaviour
 {
-    GoTo gt_script;
-    Scape scape_script;
-    Rotate rot_script;
-    DestroyEntity dest_script;
+    public GoTo gt_script;
+    public Scape scape_script;
+    public Rotate rot_script;
+    public DestroyEntity dest_script;
     GameObject rainbow_holder;
     AudioSource collide_fx;
 
     public uint lifes = 3;
-    private uint cur_lifes;
+    public uint cur_lifes;
 
     public float regen_rate = 1.5f;
     private float cur_time = 0.0f;
