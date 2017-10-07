@@ -7,8 +7,8 @@ public class Score : MonoBehaviour {
     void OnGUI()
     {
         GUIStyle myScore = new GUIStyle(GUI.skin.box);
-        myScore.fontSize = 50;
+        myScore.fontSize = 20;
         GUI.color = Color.red;
-        GUI.Box(new Rect(10, 10, 200, 60), "Score: " + score, myScore);
+        GUI.Box(new Rect(500, 558, 100, 30), "Score: " + score, myScore);
     }
 }
