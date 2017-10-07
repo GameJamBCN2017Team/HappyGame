@@ -23,20 +23,11 @@ public class Pause : MonoBehaviour
                 Time.timeScale = 0;
 
             }
-
             else
-                Time.timeScale = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            UI.SetActive(false);
-            if (Time.timeScale == 0)
             {
                 Time.timeScale = 1;
+                UI.SetActive(false);
             }
-            else
-                Time.timeScale = 1;
         }
-
     }
 }

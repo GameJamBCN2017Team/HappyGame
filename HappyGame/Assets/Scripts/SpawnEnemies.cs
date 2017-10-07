@@ -5,35 +5,35 @@ using UnityEngine;
 public class SpawnEnemies : MonoBehaviour {
 
     public GameObject enemy;
-    int cont = 0;
+    
     bool pause = false;
 
-    // Use this for initialization
-    void Start()
-    {
+    public float upgrade_rate = 7.0f;
+    public float upgrade_scale = 0.9f;
+    public float spawn_rate = 2.0f;
 
-    }
+    private float upgrade_rate_timer = 0.0f;
+    private float spawn_rate_timer = 0.0f;
+
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (pause == true) return;
+
+        upgrade_rate_timer += Time.deltaTime;
+        spawn_rate_timer += Time.deltaTime;
+
+        if(upgrade_rate <= upgrade_rate_timer)
         {
-            pause = true;
+            spawn_rate *= upgrade_scale;
+            upgrade_rate_timer = 0.0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.O))
+        if(spawn_rate <= spawn_rate_timer)
         {
-            pause = false;
-        }
-
-        if (pause == false) { 
-             cont++;
-             if (cont >= 60)
-             {
-             spawn();
-              cont = 0;
-             }
+            spawn();
+            spawn_rate_timer = 0.0f;
         }
     }
 
