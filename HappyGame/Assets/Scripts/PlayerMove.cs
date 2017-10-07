@@ -29,9 +29,9 @@ public class PlayerMove : MonoBehaviour
         {
             transform.position = new Vector3(-3.50f, transform.position.y, transform.position.z);
         }
-        else if (transform.position.x >= 9.30f)
+        else if (transform.position.x >= 8.50f)
         {
-            transform.position = new Vector3(9.30f, transform.position.y, transform.position.z);
+            transform.position = new Vector3(8.50f, transform.position.y, transform.position.z);
         }
 
         if (transform.position.y <= -3.7f)

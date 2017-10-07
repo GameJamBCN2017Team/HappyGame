@@ -9,6 +9,6 @@ public class Score : MonoBehaviour {
         GUIStyle myScore = new GUIStyle(GUI.skin.box);
         myScore.fontSize = 20;
         GUI.color = Color.red;
-        GUI.Box(new Rect(500, 558, 100, 30), "Score: " + score, myScore);
+        GUI.Box(new Rect(460, 720, 100, 30), "Score: " + score, myScore);
     }
 }

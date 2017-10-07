@@ -60,6 +60,9 @@ public class EnemyLife : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
+            GameObject score2 = GameObject.Find("Score");
+            Score playerScore = score2.GetComponent<Score>();
+            playerScore.score += 4;
             Destroy(collision.gameObject);
             collide_fx.Play();
 
