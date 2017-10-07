@@ -52,15 +52,20 @@ public class PlayerShooting : MonoBehaviour
 
         float angle = Mathf.Atan2(direction_vector.x, direction_vector.y) * Mathf.Rad2Deg;
         Quaternion angle_quat = Quaternion.AngleAxis(-angle, Vector3.forward);
-        instance.transform.rotation = angle_quat;
-        instance.transform.position = transform.position + (direction_vector.normalized * cur_spawn_dist);
+
+        if (instance != null)
+        {
+            instance.transform.rotation = angle_quat;
+            instance.transform.position = transform.position + (direction_vector.normalized * cur_spawn_dist);
+        }
 
         if (shoot_delay_timer > shoot_delay)
         {
             Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 directionVector = (target - transform.position).normalized;
-            instance.AddForce(directionVector * power);
-
+            if (instance != null) { 
+                instance.AddForce(directionVector * power);
+            }
             instance = null;
 
             shoot_delay_timer = 0.0f;
