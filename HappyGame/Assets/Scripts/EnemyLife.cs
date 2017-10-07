@@ -20,6 +20,8 @@ public class EnemyLife : MonoBehaviour
     private float rainbow_cur_time;
     public float rainbow_tot_time;
 
+    PlayerDieCollision player_die;
+
     void Start()
     {
         gt_script = GetComponent<GoTo>();
@@ -27,6 +29,7 @@ public class EnemyLife : MonoBehaviour
         rot_script = GetComponentInChildren<Rotate>();
         dest_script = GetComponent<DestroyEntity>();
         collide_fx = GetComponent<AudioSource>();
+        player_die = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerDieCollision>();
         rainbow_holder = transform.Find("RainbowHolder").gameObject;
         rainbow_holder.SetActive(false);
 
@@ -36,7 +39,7 @@ public class EnemyLife : MonoBehaviour
     void Update()
     {
         cur_time += Time.deltaTime;
-        if (cur_time > regen_rate && cur_lifes < lifes && cur_lifes > 0)
+        if (cur_time > regen_rate && cur_lifes < lifes && cur_lifes > 0 && player_die.dead == false)
         {
             cur_lifes += 1;
             cur_time = 0.0f;

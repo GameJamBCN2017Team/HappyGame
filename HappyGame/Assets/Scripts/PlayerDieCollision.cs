@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerDieCollision : MonoBehaviour {
+public class PlayerDieCollision : MonoBehaviour
+{
 
     public bool dead = false;
     public AudioSource music;
@@ -12,6 +13,7 @@ public class PlayerDieCollision : MonoBehaviour {
     private float cur_time;
 
     GameObject spawner;
+    GameObject[] enemies;
 
     void Start()
     {
@@ -39,21 +41,27 @@ public class PlayerDieCollision : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.tag == "Enemy")
+        if (col.gameObject.tag == "Enemy")
         {
             music.Play();
             dead = true;
             cur_time = 0.0f;
             spawner.GetComponent<SpawnEnemies>().enabled = false;
 
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach(GameObject enemie in enemies)
+            enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject enemy in enemies)
             {
-                enemie.GetComponent<Rotate>().enabled = true;
-                enemie.GetComponent<DestroyEntity>().enabled = true;
-                enemie.GetComponent<Scape>().enabled = true;
-                enemie.GetComponent<GoTo>().enabled = false;
-                enemie.GetComponent<EnemyLife>().cur_lifes = 0;
+                /*enemy.GetComponent<EnemyLife>().cur_lifes = 0;
+                enemy.GetComponent<Rotate>().enabled = true;
+                */
+                enemy.GetComponent<GoTo>().enabled = false;
+                enemy.GetComponent<Scape>().enabled = true;
+                enemy.GetComponent<Scape>().speed = 2.5f;
+                //enemy.GetComponent<EnemyLife>().cur_lifes = 0;
+                //enemy.GetComponent<Rotate>().enabled = true;
+                enemy.GetComponent<DestroyEntity>().enabled = true;
+
+
             }
         }
     }

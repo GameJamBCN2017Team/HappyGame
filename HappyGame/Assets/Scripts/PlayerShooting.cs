@@ -16,9 +16,12 @@ public class PlayerShooting : MonoBehaviour
 
     AudioSource shoot_fx;
 
+    PlayerDieCollision die_script;
+
     void Start()
     {
         shoot_fx = GetComponent<AudioSource>();
+        die_script = GetComponent<PlayerDieCollision>();
     }
 
     // Update is called once per frame
@@ -26,6 +29,7 @@ public class PlayerShooting : MonoBehaviour
     {
         cur_time += Time.deltaTime;
         shoot_delay_timer += Time.deltaTime;
+        if (die_script.dead) return;
 
         if (cur_time > fire_rate)
         {
