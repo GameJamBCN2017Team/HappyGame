@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Menu.unity
+- path: Assets/HappyGame.unity
   isLoaded: 1
   isActive: 1
