@@ -85,7 +85,7 @@ public class EnemyLife : MonoBehaviour
                 gt_script.enabled = false;
             }
 
-            if(cur_lifes > 0)
+            if(cur_lifes > 0 && rainbow_holder.active == false)
             {
                 rainbow_holder.SetActive(true);
                 rainbow_cur_time = 0.0f;
